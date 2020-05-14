@@ -75,8 +75,13 @@ function PythonSettings()
    set expandtab ts=3 sw=3 sts=3          " Spaces > tabs
 endfun
 
+function GoSettings()
+   set noexpandtab ts=3 sw=3 sts=3        " Spaces > tabs
+endfun
+
 " Language specific overrides
 au BufNewFile,BufRead *.h,*.c,*.cpp,*.S call CSettings()
 au BufNewFile,BufRead *.py              call PythonSettings()
 au BufNewFile,BufRead *.md              call MarkdownSettings()
 au BufNewFile,BufRead *.yaml            call YamlSettings()
+au BufNewFile,Bufread *.go              call GoSettings()
