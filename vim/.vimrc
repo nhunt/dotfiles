@@ -96,6 +96,7 @@ endfun
 
 function AsmSettings()
    set syntax=nasm
+   set noexpandtab ts=3 sw=3 sts=3        " Spaces > tabs
 endfun
 
 " Language specific overrides
