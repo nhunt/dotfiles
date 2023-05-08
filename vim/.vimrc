@@ -63,8 +63,22 @@ function CSettings()
    set expandtab ts=3 sw=3 sts=3          " Spaces > tabs
 endfun
 
-function MarkdownSettings()
-   set foldmethod=indent
+function LongLineSettings()
+   set number                             " Show line numbers
+   set wrap                               " Wrap long lines
+   set linebreak                          " Break lines on word boundaries
+   set display+=lastline                  " Show as much of the last line as you can
+   set scrolloff=9999999                  " Try to keep the cursor in the center of the page
+   
+   nnoremap j gj
+   nnoremap k gk
+   nnoremap 0 g0
+   nnoremap ^ g^
+   nnoremap $ g$
+endfun
+
+function HtmlSettings()
+   set expandtab ts=3 sw=3 sts=3          " Spaces > tabs
 endfun
 
 function YamlSettings()
@@ -75,8 +89,20 @@ function PythonSettings()
    set expandtab ts=3 sw=3 sts=3          " Spaces > tabs
 endfun
 
+function GoSettings()
+   set noexpandtab
+   set ts=3 sw=3 sts=3
+endfun
+
+function AsmSettings()
+   set syntax=nasm
+endfun
+
 " Language specific overrides
 au BufNewFile,BufRead *.h,*.c,*.cpp,*.S call CSettings()
 au BufNewFile,BufRead *.py              call PythonSettings()
-au BufNewFile,BufRead *.md              call MarkdownSettings()
-au BufNewFile,BufRead *.yaml            call YamlSettings()
+au BufNewFile,BufRead *.md,*.rst        call LongLineSettings()
+au BufNewFile,BufRead *.yml,*.yaml      call YamlSettings()
+au BufNewFile,BufRead *.go              call GoSettings()
+au BufNewFile,BufRead *.html            call HtmlSettings()
+au BufNewFile,BufRead *.asm             call AsmSettings()
